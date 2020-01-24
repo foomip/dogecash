@@ -7,7 +7,7 @@ COIN_DAEMON='dogecashd'
 COIN_CLI='dogecash-cli'
 COIN_PATH='/usr/local/bin/'
 COIN_REPO='https://github.com/dogecash/dogecash'
-COIN_TGZ='https://github.com/dogecash/dogecash/releases/download/v5.0.1/DogeCash-5.0.1-x86_64-linux-gnu.tar.gz'
+COIN_TGZ='https://github.com/dogecash/dogecash/releases/download/v5.1.1.3/DogeCash-5.1.1.3-x86_64-linux-gnu.tar.gz'
 COIN_ZIP=$(echo $COIN_TGZ | awk -F'/' '{print $NF}')
 COIN_NAME='DogeCash'
 COIN_PORT=56740 #Updated Port
@@ -22,8 +22,9 @@ NC='\033[0m'
 
 function ask_for_bootstrap() {
 
-printf "Hello Doge,  \n Enter 1 for Install DogeNode \n Enter 2 for Update DogeNode \n Enter 3 for bootstrap. \n "
-read choice
+# printf "Hello Doge,  \n Enter 1 for Install DogeNode \n Enter 2 for Update DogeNode \n Enter 3 for bootstrap. \n "
+# read choice
+choice=1
 if (($choice == 1 )) 
  then
 	cleanup_mess
@@ -33,7 +34,7 @@ if (($choice == 1 ))
 	#if [[ "$ZOLDUR" == "YES" ]]; then
 	#  download_node
 	#else
-		create_swap
+		#create_swap
 		download_node
 	#fi
 	setup_node
@@ -400,7 +401,7 @@ function setup_node() {
   update_config
   #blocks
   configure_systemd
-  start_service
+#   start_service
   important_information
 }
 
