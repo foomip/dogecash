@@ -27,7 +27,7 @@ function ask_for_bootstrap() {
 choice=1
 if (($choice == 1 )) 
  then
-	cleanup_mess
+# 	cleanup_mess
 	#checks
 	prepare_system
 	#ask_permission
