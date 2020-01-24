@@ -258,26 +258,27 @@ function enable_firewall() {
 
 
 function get_ip() {
-  declare -a NODE_IPS
-  for ips in $(netstat -i | awk '!/Kernel|Iface|lo/ {print $1," "}')
-  do
-    NODE_IPS+=($(curl --interface $ips --connect-timeout 2 -s4 icanhazip.com))
-  done
+#   declare -a NODE_IPS
+#   for ips in $(netstat -i | awk '!/Kernel|Iface|lo/ {print $1," "}')
+#   do
+#     NODE_IPS+=($(curl --interface $ips --connect-timeout 2 -s4 icanhazip.com))
+#   done
 
-  if [ ${#NODE_IPS[@]} -gt 1 ]
-    then
-      echo -e "${GREEN}More than one IP. Please type 0 to use the first IP, 1 for the second and so on...${NC}"
-      INDEX=0
-      for ip in "${NODE_IPS[@]}"
-      do
-        echo ${INDEX} $ip
-        let INDEX=${INDEX}+1
-      done
-      read -e choose_ip
-      NODEIP=${NODE_IPS[$choose_ip]}
-  else
-    NODEIP=${NODE_IPS[0]}
-  fi
+#   if [ ${#NODE_IPS[@]} -gt 1 ]
+#     then
+#       echo -e "${GREEN}More than one IP. Please type 0 to use the first IP, 1 for the second and so on...${NC}"
+#       INDEX=0
+#       for ip in "${NODE_IPS[@]}"
+#       do
+#         echo ${INDEX} $ip
+#         let INDEX=${INDEX}+1
+#       done
+#       read -e choose_ip
+#       NODEIP=${NODE_IPS[$choose_ip]}
+#   else
+#     NODEIP=${NODE_IPS[0]}
+#   fi
+  NODEIP=10.10.10.10
 }
 
 
