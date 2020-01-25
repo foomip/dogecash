@@ -186,25 +186,26 @@ EOF
 }
 
 function create_key() {
-  echo -e "Enter your ${RED}$COIN_NAME Masternode Private Key${NC}. Leave it blank to generate a new ${RED}Masternode Private Key${NC} for you:"
-  read -e COINKEY
-  if [[ -z "$COINKEY" ]]; then
-  $COIN_PATH$COIN_DAEMON -daemon
-  sleep 30
-  if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
-   echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
-   exit 1
-  fi
-  COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
-  if [ "$?" -gt "0" ];
-    then
-    echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the Private Key${NC}"
-    sleep 30
-    COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
-  fi
-  $COIN_PATH$COIN_CLI stop
-fi
-clear
+#   echo -e "Enter your ${RED}$COIN_NAME Masternode Private Key${NC}. Leave it blank to generate a new ${RED}Masternode Private Key${NC} for you:"
+#   read -e COINKEY
+#   if [[ -z "$COINKEY" ]]; then
+#   $COIN_PATH$COIN_DAEMON -daemon
+#   sleep 30
+#   if [ -z "$(ps axo cmd:100 | grep $COIN_DAEMON)" ]; then
+#    echo -e "${RED}$COIN_NAME server couldn not start. Check /var/log/syslog for errors.{$NC}"
+#    exit 1
+#   fi
+#   COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
+#   if [ "$?" -gt "0" ];
+#     then
+#     echo -e "${RED}Wallet not fully loaded. Let us wait and try again to generate the Private Key${NC}"
+#     sleep 30
+#     COINKEY=$($COIN_PATH$COIN_CLI createmasternodekey)
+#   fi
+#   $COIN_PATH$COIN_CLI stop
+# fi
+# clear
+  COINKEY=building
 }
 
 function update_config() {
